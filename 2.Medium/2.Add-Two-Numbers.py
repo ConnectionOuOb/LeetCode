@@ -16,11 +16,12 @@ Input: l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 Output: [8,9,9,9,0,0,0,1]
 """
 
-# Definition for singly-linked list.
+
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
 
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
@@ -30,19 +31,25 @@ class Solution(object):
         :rtype: ListNode
         """
 
+        # Initial
         add1 = 0
         RETs = ListNode()
         Swap = RETs
 
+        # Ietrate all elements
         while l1 != None or l2 != None or add1 != 0:
+            # Get now value
             n1 = l1.val if l1 != None else 0
             n2 = l2.val if l2 != None else 0
 
+            # Sum
             ll = n1 + n2 + add1
 
+            # Set next value
             Swap.next = ListNode(ll % 10)
             add1 = ll // 10
 
+            # Go next
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
 
@@ -50,8 +57,11 @@ class Solution(object):
 
         return RETs.next
 
+
 if __name__ == "__main__":
     s = Solution()
-    s.addTwoNumbers(ListNode(2, ListNode(4, ListNode(3))), ListNode(5, ListNode(6, ListNode(4))))
+    s.addTwoNumbers(ListNode(2, ListNode(4, ListNode(3))),
+                    ListNode(5, ListNode(6, ListNode(4))))
     s.addTwoNumbers(ListNode(0), ListNode(0))
-    s.addTwoNumbers(ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9))))))), ListNode(9, ListNode(9, ListNode(9, ListNode(9)))))
+    s.addTwoNumbers(ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(
+        9, ListNode(9, ListNode(9))))))), ListNode(9, ListNode(9, ListNode(9, ListNode(9)))))

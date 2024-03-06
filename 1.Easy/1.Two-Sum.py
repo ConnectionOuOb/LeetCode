@@ -4,6 +4,7 @@ You may assume that each input would have exactly one solution, and you may not 
 You can return the answer in any order.
 """
 
+
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -12,6 +13,7 @@ class Solution(object):
         :rtype: List[int]
         """
 
+        # Constraints
         numElement = len(nums)
 
         if numElement < 2 or numElement > 10**4:
@@ -20,15 +22,19 @@ class Solution(object):
         if target < -10**9 or target > 10**9:
             return []
 
+        # Main
         for i in range(numElement):
+            # Constraints
             if nums[i] < -10**9 or nums[i] > 10**9:
                 return []
 
+            # Return answer
             for j in range(i+1, numElement):
                 if nums[i] + nums[j] == target:
                     return [i, j]
 
         return []
+
 
 if __name__ == "__main__":
     s = Solution()
